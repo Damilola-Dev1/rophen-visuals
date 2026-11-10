@@ -20,3 +20,25 @@ export interface NavItem {
   label: string;
   end?: boolean;
 }
+
+export interface HeroMedia {
+  videoUrl: string;
+  posterImage: string;
+}
+
+export interface Showreel {
+  title: string;
+  videoUrl: string;
+  posterImage: string;
+  thumbnail?: string;
+  alt: string;
+}
+
+export interface Client {
+  id: string;
+  name: string;
+  logo: string;
+  website?: string;
+  order: number;
+  published: boolean;
+}

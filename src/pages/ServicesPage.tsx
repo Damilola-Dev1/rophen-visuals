@@ -4,7 +4,7 @@ export default function ServicesPage() {
   usePageTitle("Services");
 
   return (
-    <section className="px-6 py-20 md:px-16">
+    <section className="px-6 pb-20 pt-36 md:px-16">
       <h1 className="font-display text-5xl md:text-6xl">Services</h1>
       <p className="mt-4 max-w-xl text-stone-deep">
         Development placeholder. The services page is built in Phase 4.
