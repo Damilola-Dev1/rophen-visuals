@@ -40,3 +40,9 @@ export interface Client {
   order: number;
   published: boolean;
 }
+
+export interface Service {
+  slug: string;
+  title: string;
+  description: string;
+}
