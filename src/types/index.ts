@@ -46,3 +46,17 @@ export interface Service {
   title: string;
   description: string;
 }
+
+export interface AboutContent {
+  name: string;
+  portraitImage: string;
+  portraitAlt: string;
+  paragraphs: string[];
+  closingLine: string;
+}
+
+export interface BrandIntro {
+  eyebrow: string;
+  heading: string;
+  paragraphs: string[];
+}
