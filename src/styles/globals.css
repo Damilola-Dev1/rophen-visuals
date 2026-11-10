@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-charcoal: #24231f;
+  --color-ivory: #f2eee6;
+  --color-bronze: #c5a77d;
+  --color-stone-grey: #817b70;
+
+  /* Proposed extra tone for small secondary text on ivory (see contrast note) */
+  --color-stone-deep: #5e5950;
+
+  /* Fonts */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-bronze);
+    color: var(--color-charcoal);
+  }
+
+  /* Focus ring follows the text colour, so it stays visible on both
+     light and dark sections */
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
