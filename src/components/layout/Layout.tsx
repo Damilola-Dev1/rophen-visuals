@@ -1,13 +1,7 @@
 import { useEffect } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-
-const links = [
-  { to: "/", label: "Home", end: true },
-  { to: "/projects", label: "Projects" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/contact", label: "Contact" },
-];
+import { Outlet, useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function Layout() {
   const { pathname, hash } = useLocation();
@@ -18,30 +12,17 @@ export default function Layout() {
 
   return (
     <>
-      <header className="border-b border-charcoal/15 bg-ivory px-6 py-4 md:px-16">
-        <nav
-          aria-label="Temporary navigation"
-          className="flex flex-wrap gap-x-6 gap-y-2 text-sm"
-        >
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.end}
-              className={({ isActive }) =>
-                isActive
-                  ? "font-medium underline underline-offset-4"
-                  : "text-stone-deep"
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
-      </header>
-      <main>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-ivory focus:px-4 focus:py-3 focus:text-sm focus:text-charcoal"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main" tabIndex={-1} className="outline-none">
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }
