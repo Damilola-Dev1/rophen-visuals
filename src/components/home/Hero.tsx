@@ -67,7 +67,7 @@ export default function Hero() {
       className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-charcoal text-ivory"
     >
       <HeroBackground />
-      <div className="absolute inset-0 bg-charcoal/55" aria-hidden="true" />
+      <div className="absolute inset-0 bg-charcoal/65" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pb-16 pt-32 text-center md:px-16">
         <p className="text-xs uppercase tracking-[0.24em] text-bronze md:text-sm">

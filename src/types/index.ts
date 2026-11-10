@@ -26,12 +26,10 @@ export interface HeroMedia {
   posterImage: string;
 }
 
-export interface Showreel {
+export interface ShowreelVideo {
   title: string;
   videoUrl: string;
   posterImage: string;
-  thumbnail?: string;
-  alt: string;
 }
 
 export interface Client {
