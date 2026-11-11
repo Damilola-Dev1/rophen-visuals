@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ArrowUpRight, X } from "@phosphor-icons/react";
+import Logo from "../ui/Logo";
 import { navLinks } from "../../data/navigation";
 import { site } from "../../data/site";
 
@@ -103,9 +104,7 @@ export default function MobileNavigation({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-lg tracking-wide">
-                {site.name}
-              </span>
+              <Logo className="h-9 w-auto" />
               <button
                 ref={closeRef}
                 type="button"

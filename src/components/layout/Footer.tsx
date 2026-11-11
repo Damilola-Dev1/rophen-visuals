@@ -9,6 +9,7 @@ import {
   WhatsappLogo,
   YoutubeLogo,
 } from "@phosphor-icons/react";
+import Logo from "../ui/Logo";
 import { navLinks } from "../../data/navigation";
 import { site } from "../../data/site";
 import type { SocialLink } from "../../types";
@@ -58,7 +59,7 @@ export default function Footer() {
     <footer className="bg-charcoal px-6 pb-8 pt-20 text-ivory md:px-16">
       <div className="grid gap-14 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="font-display text-4xl md:text-5xl">{site.name}</p>
+          <Logo className="h-16 w-auto md:h-20" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/75">
             {site.description}
           </p>

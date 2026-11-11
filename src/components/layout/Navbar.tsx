@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { List } from "@phosphor-icons/react";
+import Logo from "../ui/Logo";
 import { navLinks } from "../../data/navigation";
-import { site } from "../../data/site";
 import MobileNavigation from "./MobileNavigation";
 
 export default function Navbar() {
@@ -18,11 +18,8 @@ export default function Navbar() {
     <>
       <header className="fixed inset-x-0 top-2.5 z-50 flex justify-center px-3 md:top-4 md:px-6">
         <div className="flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border border-ivory/15 bg-charcoal py-1.5 pl-4 pr-1.5 text-ivory md:pl-6">
-          <Link
-            to="/"
-            className="font-display text-lg leading-none tracking-wide md:text-xl"
-          >
-            {site.name}
+          <Link to="/" className="flex items-center">
+            <Logo className="h-9 w-auto md:h-10" />
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">
