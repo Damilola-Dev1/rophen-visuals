@@ -19,24 +19,24 @@ export default function MobileNavigation({
   const closeRef = useRef<HTMLButtonElement>(null);
   const reduceMotion = useReducedMotion();
   const duration = reduceMotion ? 0 : 0.25;
-  const offset = reduceMotion ? 0 : -16;
+  const offset = reduceMotion ? 0 : -12;
 
-  // Links rise one after another after the menu has faded in.
+  // Links rise one after another after the panel has appeared.
   const listVariants: Variants = {
     hidden: {},
     show: {
       transition: {
-        delayChildren: reduceMotion ? 0 : 0.12,
-        staggerChildren: reduceMotion ? 0 : 0.06,
+        delayChildren: reduceMotion ? 0 : 0.1,
+        staggerChildren: reduceMotion ? 0 : 0.05,
       },
     },
   };
   const itemVariants: Variants = {
-    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 24 },
+    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: reduceMotion ? 0 : 0.4, ease: "easeOut" },
+      transition: { duration: reduceMotion ? 0 : 0.3, ease: "easeOut" },
     },
   };
 
@@ -87,94 +87,108 @@ export default function MobileNavigation({
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-charcoal text-ivory md:hidden"
-          initial={{ opacity: 0, y: offset }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: offset }}
+          className="fixed inset-0 z-[60] bg-charcoal/60 md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration, ease: "easeOut" }}
+          onClick={onClose}
         >
-          <div className="flex items-center justify-between px-5 pt-5">
-            <span className="font-display text-xl tracking-wide">
-              {site.name}
-            </span>
-            <button
-              ref={closeRef}
-              type="button"
-              aria-label="Close menu"
-              onClick={onClose}
-              className="grid h-11 w-11 place-items-center rounded-full bg-ivory/10 transition-all duration-200 active:scale-90 active:bg-ivory/20 motion-reduce:transform-none"
-            >
-              <motion.span
-                className="grid place-items-center"
-                initial={{
-                  rotate: reduceMotion ? 0 : -90,
-                  opacity: reduceMotion ? 1 : 0,
-                }}
-                animate={{ rotate: 0, opacity: 1 }}
-                transition={{
-                  duration: reduceMotion ? 0 : 0.35,
-                  delay: reduceMotion ? 0 : 0.1,
-                  ease: "easeOut",
-                }}
-              >
-                <X size={22} aria-hidden="true" />
-              </motion.span>
-            </button>
-          </div>
-
-          <nav aria-label="Mobile" className="mt-10 flex-1 px-5">
-            <motion.ul variants={listVariants} initial="hidden" animate="show">
-              {navLinks.map((link, index) => (
-                <motion.li key={link.to} variants={itemVariants}>
-                  <NavLink
-                    to={link.to}
-                    end={link.end}
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      `flex items-baseline gap-4 border-b border-ivory/15 py-4 font-display text-5xl transition-all duration-200 active:translate-x-1 active:opacity-70 motion-reduce:transform-none ${
-                        isActive ? "text-bronze" : ""
-                      }`
-                    }
-                  >
-                    <span className="font-sans text-sm text-bronze">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {link.label}
-                  </NavLink>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </nav>
-
           <motion.div
-            className="px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10"
-            initial={{
-              opacity: reduceMotion ? 1 : 0,
-              y: reduceMotion ? 0 : 24,
-            }}
+            className="mx-3 mt-2.5 max-h-[calc(100dvh-1.25rem)] overflow-y-auto overscroll-contain rounded-3xl border border-ivory/15 bg-charcoal px-5 pb-5 pt-3 text-ivory"
+            initial={{ opacity: 0, y: offset }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.4,
-              delay: reduceMotion ? 0 : 0.12 + navLinks.length * 0.06,
-              ease: "easeOut",
-            }}
+            exit={{ opacity: 0, y: offset }}
+            transition={{ duration, ease: "easeOut" }}
+            onClick={(event) => event.stopPropagation()}
           >
-            <Link
-              to="/contact"
-              onClick={onClose}
-              className="flex items-center justify-between rounded-full bg-bronze px-6 py-4 text-base font-medium text-charcoal transition-transform duration-200 active:scale-[0.98] motion-reduce:transform-none"
-            >
-              Start a Project
-              <ArrowUpRight size={20} aria-hidden="true" />
-            </Link>
-            {site.email && (
-              <a
-                href={`mailto:${site.email}`}
-                className="mt-6 block text-sm text-ivory/75"
+            <div className="flex items-center justify-between">
+              <span className="font-display text-lg tracking-wide">
+                {site.name}
+              </span>
+              <button
+                ref={closeRef}
+                type="button"
+                aria-label="Close menu"
+                onClick={onClose}
+                className="grid h-9 w-9 place-items-center rounded-full bg-ivory/10 transition-all duration-200 active:scale-90 active:bg-ivory/20 motion-reduce:transform-none"
               >
-                {site.email}
-              </a>
-            )}
+                <motion.span
+                  className="grid place-items-center"
+                  initial={{
+                    rotate: reduceMotion ? 0 : -90,
+                    opacity: reduceMotion ? 1 : 0,
+                  }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  transition={{
+                    duration: reduceMotion ? 0 : 0.3,
+                    delay: reduceMotion ? 0 : 0.08,
+                    ease: "easeOut",
+                  }}
+                >
+                  <X size={20} aria-hidden="true" />
+                </motion.span>
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="mt-4">
+              <motion.ul
+                variants={listVariants}
+                initial="hidden"
+                animate="show"
+              >
+                {navLinks.map((link, index) => (
+                  <motion.li key={link.to} variants={itemVariants}>
+                    <NavLink
+                      to={link.to}
+                      end={link.end}
+                      onClick={onClose}
+                      className={({ isActive }) =>
+                        `flex items-baseline gap-3 border-t border-ivory/15 py-3 font-display text-2xl transition-all duration-200 active:translate-x-1 active:opacity-70 motion-reduce:transform-none ${
+                          isActive ? "text-bronze" : ""
+                        }`
+                      }
+                    >
+                      <span className="font-sans text-xs text-bronze">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      {link.label}
+                    </NavLink>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </nav>
+
+            <motion.div
+              className="mt-4"
+              initial={{
+                opacity: reduceMotion ? 1 : 0,
+                y: reduceMotion ? 0 : 14,
+              }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.3,
+                delay: reduceMotion ? 0 : 0.1 + navLinks.length * 0.05,
+                ease: "easeOut",
+              }}
+            >
+              <Link
+                to="/contact"
+                onClick={onClose}
+                className="flex items-center justify-between rounded-full bg-bronze px-5 py-3 text-base font-medium text-charcoal transition-transform duration-200 active:scale-[0.98] motion-reduce:transform-none"
+              >
+                Start a Project
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+              {site.email && (
+                <a
+                  href={`mailto:${site.email}`}
+                  className="mt-4 block text-sm text-ivory/75"
+                >
+                  {site.email}
+                </a>
+              )}
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
