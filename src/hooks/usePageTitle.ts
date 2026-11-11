@@ -45,16 +45,19 @@ function upsertCanonical(href: string) {
 
 interface PageOptions {
   noindex?: boolean;
+  description?: string;
 }
 
 export function usePageTitle(title?: string, options: PageOptions = {}) {
   const { pathname } = useLocation();
   const noindex = options.noindex ?? false;
+  const customDescription = options.description;
 
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
     const path = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
-    const description = descriptions[path] ?? DEFAULT_DESCRIPTION;
+    const description =
+      customDescription ?? descriptions[path] ?? DEFAULT_DESCRIPTION;
     const url = `${SITE_URL}${path === "/" ? "/" : path}`;
 
     document.title = fullTitle;
@@ -64,5 +67,5 @@ export function usePageTitle(title?: string, options: PageOptions = {}) {
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", url);
     upsertCanonical(url);
-  }, [title, pathname, noindex]);
+  }, [title, pathname, noindex, customDescription]);
 }
