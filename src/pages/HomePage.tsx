@@ -1,5 +1,6 @@
 import Hero from "../components/home/Hero";
 import Showreel from "../components/home/Showreel";
+import FeaturedProjects from "../components/home/FeaturedProjects";
 import ServicesOverview from "../components/home/ServicesOverview";
 import AboutPreview from "../components/home/AboutPreview";
 import FaqSection from "../components/home/FaqSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Showreel />
+      <FeaturedProjects />
       <ServicesOverview />
       <AboutPreview />
       <FaqSection />

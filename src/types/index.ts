@@ -66,3 +66,26 @@ export interface FAQ {
   question: string;
   answer: string;
 }
+
+export interface MediaItem {
+  type: "image" | "video";
+  url: string;
+  posterImage?: string;
+  alt: string;
+}
+
+export interface Project {
+  slug: string;
+  title: string;
+  // The slug of one of the six services, e.g. "event-coverage".
+  category: string;
+  // Optional occasion tag, e.g. "Wedding" or "Birthday".
+  occasion?: string;
+  description?: string;
+  year?: string;
+  // Only fill this in with the client's permission.
+  clientName?: string;
+  coverImage: string;
+  media: MediaItem[];
+  featured: boolean;
+}
