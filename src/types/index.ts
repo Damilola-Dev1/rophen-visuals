@@ -60,3 +60,9 @@ export interface BrandIntro {
   heading: string;
   paragraphs: string[];
 }
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+}
