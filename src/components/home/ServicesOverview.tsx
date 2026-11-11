@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
+import Slider from "../ui/Slider";
 import { services } from "../../data/services";
 
 export default function ServicesOverview() {
@@ -24,12 +25,16 @@ export default function ServicesOverview() {
             Services
           </h2>
 
-          <ul className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <li key={service.slug}>
+          <div className="mt-12 md:mt-16">
+            <Slider
+              label="Services"
+              itemClassName="w-[82%] sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.67rem)]"
+            >
+              {services.map((service, index) => (
                 <Link
+                  key={service.slug}
                   to={`/contact?service=${service.slug}`}
-                  className="group flex h-full min-h-[14rem] flex-col justify-between rounded-3xl border border-charcoal/15 p-6 transition-colors duration-300 hover:bg-charcoal focus-visible:bg-charcoal md:p-8"
+                  className="group flex min-h-[14rem] w-full flex-col justify-between rounded-3xl border border-charcoal/15 p-6 transition-colors duration-300 hover:bg-charcoal focus-visible:bg-charcoal md:p-8"
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-sm tracking-[0.2em] text-stone-deep transition-colors duration-300 group-hover:text-bronze group-focus-visible:text-bronze">
@@ -55,9 +60,9 @@ export default function ServicesOverview() {
                     </span>
                   </div>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
 

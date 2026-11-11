@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "@phosphor-icons/react";
+import FilterChips from "../ui/FilterChips";
 import ProjectCard from "../ui/ProjectCard";
 import { getProjects, isUsingDemoProjects } from "../../data/projects";
 import { services } from "../../data/services";
@@ -35,12 +36,6 @@ export default function FeaturedProjects() {
     filter === "all"
       ? featured
       : featured.filter((project) => project.category === filter);
-
-  const chipBase =
-    "rounded-full border px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal";
-  const chipOn = "border-charcoal bg-charcoal text-ivory";
-  const chipOff =
-    "border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-ivory";
 
   return (
     <section
@@ -78,33 +73,11 @@ export default function FeaturedProjects() {
         </div>
 
         {categories.length > 1 && (
-          <div
-            role="group"
-            aria-label="Filter projects by category"
-            className="mt-10 flex flex-wrap gap-2"
-          >
-            <button
-              type="button"
-              aria-pressed={filter === "all"}
-              onClick={() => setFilter("all")}
-              className={`${chipBase} ${filter === "all" ? chipOn : chipOff}`}
-            >
-              All
-            </button>
-            {categories.map((category) => (
-              <button
-                key={category.slug}
-                type="button"
-                aria-pressed={filter === category.slug}
-                onClick={() => setFilter(category.slug)}
-                className={`${chipBase} ${
-                  filter === category.slug ? chipOn : chipOff
-                }`}
-              >
-                {category.title}
-              </button>
-            ))}
-          </div>
+          <FilterChips
+            categories={categories}
+            value={filter}
+            onChange={setFilter}
+          />
         )}
 
         {visible.length === 0 ? (

@@ -1,3 +1,4 @@
+import Slider from "../ui/Slider";
 import {
   getTestimonials,
   isUsingDemoTestimonials,
@@ -32,10 +33,18 @@ export default function Testimonials() {
           </p>
         )}
 
-        <ul className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-          {items.map((item) => (
-            <li key={item.id}>
-              <figure className="flex h-full flex-col justify-between rounded-3xl border border-ivory/15 p-6 md:p-8">
+        <div className="mt-12 md:mt-16">
+          <Slider
+            label="Client testimonials"
+            tone="dark"
+            autoPlayMs={3000}
+            itemClassName="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.67rem)]"
+          >
+            {items.map((item) => (
+              <figure
+                key={item.id}
+                className="flex h-full w-full flex-col justify-between rounded-3xl border border-ivory/15 p-6 md:p-8"
+              >
                 <blockquote className="font-display text-2xl font-medium leading-snug md:text-3xl">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
@@ -48,9 +57,9 @@ export default function Testimonials() {
                   )}
                 </figcaption>
               </figure>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </Slider>
+        </div>
       </div>
     </section>
   );
