@@ -39,6 +39,18 @@ function SocialIcon({ platform }: { platform: SocialLink["platform"] }) {
 const linkClass =
   "inline-flex items-center gap-3 text-sm text-ivory/80 transition-colors hover:text-bronze";
 
+// Bordered contact and social rows.
+const rowClass =
+  "group flex items-center justify-between gap-4 border-b border-ivory/15 py-3.5 text-sm text-ivory/80 transition-colors hover:text-bronze focus-visible:text-bronze";
+
+const rowArrow = (
+  <ArrowUpRight
+    size={18}
+    aria-hidden="true"
+    className="flex-none transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none"
+  />
+);
+
 const headingClass = "text-xs uppercase tracking-[0.2em] text-bronze";
 
 export default function Footer() {
@@ -67,12 +79,15 @@ export default function Footer() {
 
         <div className="md:col-span-4">
           <h2 className={headingClass}>Get in touch</h2>
-          <ul className="mt-5 space-y-3">
+          <ul className="mt-5 border-t border-ivory/15">
             {site.email && (
               <li>
-                <a href={`mailto:${site.email}`} className={linkClass}>
-                  <EnvelopeSimple size={20} aria-hidden="true" />
-                  {site.email}
+                <a href={`mailto:${site.email}`} className={rowClass}>
+                  <span className="inline-flex items-center gap-3">
+                    <EnvelopeSimple size={20} aria-hidden="true" />
+                    {site.email}
+                  </span>
+                  {rowArrow}
                 </a>
               </li>
             )}
@@ -80,10 +95,13 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className={linkClass}
+                  className={rowClass}
                 >
-                  <Phone size={20} aria-hidden="true" />
-                  {site.phone}
+                  <span className="inline-flex items-center gap-3">
+                    <Phone size={20} aria-hidden="true" />
+                    {site.phone}
+                  </span>
+                  {rowArrow}
                 </a>
               </li>
             )}
@@ -93,10 +111,13 @@ export default function Footer() {
                   href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noreferrer"
-                  className={linkClass}
+                  className={rowClass}
                 >
-                  <WhatsappLogo size={20} aria-hidden="true" />
-                  WhatsApp
+                  <span className="inline-flex items-center gap-3">
+                    <WhatsappLogo size={20} aria-hidden="true" />
+                    WhatsApp
+                  </span>
+                  {rowArrow}
                 </a>
               </li>
             )}
@@ -106,20 +127,25 @@ export default function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className={linkClass}
+                  className={rowClass}
                 >
-                  <SocialIcon platform={link.platform} />
-                  {link.label ?? platformLabels[link.platform]}
+                  <span className="inline-flex items-center gap-3">
+                    <SocialIcon platform={link.platform} />
+                    {link.label ?? platformLabels[link.platform]}
+                  </span>
+                  {rowArrow}
                 </a>
               </li>
             ))}
             {site.location && (
-              <li className="text-sm text-ivory/80">{site.location}</li>
+              <li className="border-b border-ivory/15 py-3.5 text-sm text-ivory/80">
+                {site.location}
+              </li>
             )}
             <li>
-              <Link to="/contact" className={linkClass}>
-                Send an enquiry
-                <ArrowUpRight size={20} aria-hidden="true" />
+              <Link to="/contact" className={rowClass}>
+                <span>Send an enquiry</span>
+                {rowArrow}
               </Link>
             </li>
           </ul>
