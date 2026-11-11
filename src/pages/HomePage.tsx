@@ -4,6 +4,7 @@ import FeaturedProjects from "../components/home/FeaturedProjects";
 import ServicesOverview from "../components/home/ServicesOverview";
 import AboutPreview from "../components/home/AboutPreview";
 import FaqSection from "../components/home/FaqSection";
+import Testimonials from "../components/home/Testimonials";
 import CtaSection from "../components/home/CtaSection";
 import { usePageTitle } from "../hooks/usePageTitle";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <ServicesOverview />
       <AboutPreview />
       <FaqSection />
+      <Testimonials />
       <CtaSection />
     </>
   );

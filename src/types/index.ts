@@ -89,3 +89,13 @@ export interface Project {
   media: MediaItem[];
   featured: boolean;
 }
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  name: string;
+  // Optional, e.g. "Bride" or "Brand owner". Only if the person agrees.
+  role?: string;
+  // Must be true before a testimonial can show on the live site.
+  permissionGranted: boolean;
+}
