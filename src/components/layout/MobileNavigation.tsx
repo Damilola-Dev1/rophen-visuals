@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { ArrowUpRight, X } from "@phosphor-icons/react";
 import { navLinks } from "../../data/navigation";
 import { site } from "../../data/site";
@@ -19,6 +20,25 @@ export default function MobileNavigation({
   const reduceMotion = useReducedMotion();
   const duration = reduceMotion ? 0 : 0.25;
   const offset = reduceMotion ? 0 : -16;
+
+  // Links rise one after another after the menu has faded in.
+  const listVariants: Variants = {
+    hidden: {},
+    show: {
+      transition: {
+        delayChildren: reduceMotion ? 0 : 0.12,
+        staggerChildren: reduceMotion ? 0 : 0.06,
+      },
+    },
+  };
+  const itemVariants: Variants = {
+    hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 24 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: reduceMotion ? 0 : 0.4, ease: "easeOut" },
+    },
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -82,22 +102,36 @@ export default function MobileNavigation({
               type="button"
               aria-label="Close menu"
               onClick={onClose}
-              className="grid h-11 w-11 place-items-center rounded-full bg-ivory/10"
+              className="grid h-11 w-11 place-items-center rounded-full bg-ivory/10 transition-all duration-200 active:scale-90 active:bg-ivory/20 motion-reduce:transform-none"
             >
-              <X size={22} aria-hidden="true" />
+              <motion.span
+                className="grid place-items-center"
+                initial={{
+                  rotate: reduceMotion ? 0 : -90,
+                  opacity: reduceMotion ? 1 : 0,
+                }}
+                animate={{ rotate: 0, opacity: 1 }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.35,
+                  delay: reduceMotion ? 0 : 0.1,
+                  ease: "easeOut",
+                }}
+              >
+                <X size={22} aria-hidden="true" />
+              </motion.span>
             </button>
           </div>
 
           <nav aria-label="Mobile" className="mt-10 flex-1 px-5">
-            <ul>
+            <motion.ul variants={listVariants} initial="hidden" animate="show">
               {navLinks.map((link, index) => (
-                <li key={link.to}>
+                <motion.li key={link.to} variants={itemVariants}>
                   <NavLink
                     to={link.to}
                     end={link.end}
                     onClick={onClose}
                     className={({ isActive }) =>
-                      `flex items-baseline gap-4 border-b border-ivory/15 py-4 font-display text-5xl ${
+                      `flex items-baseline gap-4 border-b border-ivory/15 py-4 font-display text-5xl transition-all duration-200 active:translate-x-1 active:opacity-70 motion-reduce:transform-none ${
                         isActive ? "text-bronze" : ""
                       }`
                     }
@@ -107,16 +141,28 @@ export default function MobileNavigation({
                     </span>
                     {link.label}
                   </NavLink>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </nav>
 
-          <div className="px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10">
+          <motion.div
+            className="px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10"
+            initial={{
+              opacity: reduceMotion ? 1 : 0,
+              y: reduceMotion ? 0 : 24,
+            }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.4,
+              delay: reduceMotion ? 0 : 0.12 + navLinks.length * 0.06,
+              ease: "easeOut",
+            }}
+          >
             <Link
               to="/contact"
               onClick={onClose}
-              className="flex items-center justify-between rounded-full bg-bronze px-6 py-4 text-base font-medium text-charcoal"
+              className="flex items-center justify-between rounded-full bg-bronze px-6 py-4 text-base font-medium text-charcoal transition-transform duration-200 active:scale-[0.98] motion-reduce:transform-none"
             >
               Start a Project
               <ArrowUpRight size={20} aria-hidden="true" />
@@ -129,7 +175,7 @@ export default function MobileNavigation({
                 {site.email}
               </a>
             )}
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
