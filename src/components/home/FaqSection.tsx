@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Minus, Plus } from "@phosphor-icons/react";
+import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
 import { faqs } from "../../data/faqs";
 
 export default function FaqSection() {
@@ -14,8 +14,8 @@ export default function FaqSection() {
       aria-labelledby="faq-heading"
       className="bg-ivory px-6 pb-20 pt-8 md:px-16 md:pb-28 md:pt-16"
     >
-      <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
-        <div>
+      <div className="mx-auto max-w-3xl">
+        <div className="text-center">
           <p className="text-sm uppercase tracking-[0.2em] text-stone-deep">
             FAQ
           </p>
@@ -25,23 +25,16 @@ export default function FaqSection() {
           >
             Frequently Asked Questions
           </h2>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-charcoal px-7 py-3.5 text-base font-medium text-ivory transition-opacity duration-300 hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal"
-          >
-            Ask Something Else
-            <ArrowUpRight size={20} weight="regular" aria-hidden="true" />
-          </Link>
         </div>
 
-        <ul className="border-t border-charcoal/15">
+        <ul className="mt-12 divide-y divide-charcoal/10 overflow-hidden rounded-3xl bg-white md:mt-16">
           {faqs.map((faq) => {
             const isOpen = openId === faq.id;
             const buttonId = `faq-button-${faq.id}`;
             const panelId = `faq-panel-${faq.id}`;
 
             return (
-              <li key={faq.id} className="border-b border-charcoal/15">
+              <li key={faq.id}>
                 <h3>
                   <button
                     type="button"
@@ -49,24 +42,21 @@ export default function FaqSection() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenId(isOpen ? null : faq.id)}
-                    className="flex w-full items-center justify-between gap-6 py-5 text-left font-display text-2xl font-medium leading-snug text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal md:text-3xl"
+                    className="group flex w-full items-center justify-between gap-6 px-6 py-6 text-left transition-colors duration-300 hover:bg-charcoal/[0.03] focus-visible:bg-charcoal/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-charcoal md:px-8 md:py-7"
                   >
-                    <span>{faq.question}</span>
-                    {isOpen ? (
-                      <Minus
-                        size={24}
-                        weight="regular"
-                        aria-hidden="true"
-                        className="flex-none"
-                      />
-                    ) : (
-                      <Plus
-                        size={24}
-                        weight="regular"
-                        aria-hidden="true"
-                        className="flex-none"
-                      />
-                    )}
+                    <span className="text-lg font-medium leading-snug text-charcoal transition-transform duration-300 ease-out group-hover:translate-x-2 group-active:translate-x-2 motion-reduce:transform-none md:text-xl">
+                      {faq.question}
+                    </span>
+                    <CaretDown
+                      size={22}
+                      weight="regular"
+                      aria-hidden="true"
+                      className={`flex-none text-charcoal transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                        isOpen
+                          ? "rotate-180"
+                          : "group-hover:translate-y-1 motion-reduce:transform-none"
+                      }`}
+                    />
                   </button>
                 </h3>
 
@@ -80,7 +70,7 @@ export default function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="pb-6 text-base leading-relaxed text-stone-deep md:text-lg">
+                    <p className="px-6 pb-7 text-base leading-relaxed text-stone-deep md:px-8 md:text-lg">
                       {faq.answer}
                     </p>
                   </div>
@@ -89,6 +79,16 @@ export default function FaqSection() {
             );
           })}
         </ul>
+
+        <div className="mt-10 text-center">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-charcoal px-7 py-3.5 text-base font-medium text-ivory transition-opacity duration-300 hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal"
+          >
+            Ask Something Else
+            <ArrowUpRight size={20} weight="regular" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </section>
   );
