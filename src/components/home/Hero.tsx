@@ -8,6 +8,7 @@ function HeroBackground() {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const { videoUrl, posterImage } = heroMedia;
 
   const showVideo = Boolean(videoUrl) && !reduceMotion && !videoFailed;
@@ -24,23 +25,32 @@ function HeroBackground() {
 
   return (
     <div className="absolute inset-0 bg-charcoal" aria-hidden="true">
+      {/* The poster is always underneath, so something shows straight away. */}
+      {posterImage && (
+        <img
+          src={posterImage}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+
       {showVideo && (
         <video
           ref={videoRef}
-          className="h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 motion-reduce:transition-none ${
+            videoReady ? "opacity-100" : "opacity-0"
+          }`}
           src={videoUrl}
-          poster={posterImage || undefined}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
+          onLoadedData={() => setVideoReady(true)}
           onError={() => setVideoFailed(true)}
         />
-      )}
-
-      {!showVideo && posterImage && (
-        <img src={posterImage} alt="" className="h-full w-full object-cover" />
       )}
 
       {!showVideo && !posterImage && import.meta.env.DEV && (
