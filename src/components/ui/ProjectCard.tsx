@@ -16,13 +16,17 @@ export default function ProjectCard({
     (service) => service.slug === project.category,
   )?.title;
 
+  // Tall videos get a tall box so the cover isn't cropped to a wide shape.
+  const isPortrait = project.media[0]?.orientation === "portrait";
+  const boxRatio = isPortrait ? "aspect-[4/5]" : ratio;
+
   return (
     <Link
       to={`/projects/${project.slug}`}
       className="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal"
     >
       <div
-        className={`relative isolate overflow-hidden rounded-3xl bg-charcoal/[0.07] ${ratio}`}
+        className={`relative isolate overflow-hidden rounded-3xl bg-charcoal/[0.07] ${boxRatio}`}
       >
         {project.coverImage ? (
           <img

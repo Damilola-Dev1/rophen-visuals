@@ -6,21 +6,6 @@ import ProjectCard from "../ui/ProjectCard";
 import { getProjects, isUsingDemoProjects } from "../../data/projects";
 import { services } from "../../data/services";
 
-// Asymmetric pattern: card widths, shapes and offsets repeat every four cards.
-const spans = [
-  "md:col-span-7",
-  "md:col-span-5",
-  "md:col-span-5",
-  "md:col-span-7",
-];
-const ratios = [
-  "aspect-[4/5] md:aspect-[4/3]",
-  "aspect-[4/5]",
-  "aspect-[4/5]",
-  "aspect-[4/5] md:aspect-[4/3]",
-];
-const offsets = ["", "md:mt-16", "", "md:mt-16"];
-
 export default function FeaturedProjects() {
   const [filter, setFilter] = useState<string>("all");
 
@@ -94,18 +79,12 @@ export default function FeaturedProjects() {
             </button>
           </div>
         ) : (
-          <ul className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-12 md:items-start md:gap-x-8 md:gap-y-16">
-            {visible.map((project, index) => {
-              const pattern = index % 4;
-              return (
-                <li
-                  key={project.slug}
-                  className={`${spans[pattern]} ${offsets[pattern]}`}
-                >
-                  <ProjectCard project={project} ratio={ratios[pattern]} />
-                </li>
-              );
-            })}
+          <ul className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-3">
+            {visible.map((project) => (
+              <li key={project.slug}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
           </ul>
         )}
       </div>

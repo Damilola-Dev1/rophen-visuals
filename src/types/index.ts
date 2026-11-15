@@ -72,6 +72,8 @@ export interface MediaItem {
   url: string;
   posterImage?: string;
   alt: string;
+  // Only needed for videos. Portrait videos use the VideoPlayer's aspect="portrait".
+  orientation?: "portrait" | "landscape";
 }
 
 export interface Project {

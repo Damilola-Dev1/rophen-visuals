@@ -86,16 +86,24 @@ export default function ProjectDetailsPage() {
             <ul className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
               {items.map((item, itemIndex) => {
                 if (item.type === "video") {
+                  // Tall videos get a tall box. Two tall videos sit side by side.
+                  const portrait = item.orientation === "portrait";
+                  const alone = items.length === 1;
                   return (
                     <li
                       key={`${itemIndex}-${item.url}`}
-                      className="md:col-span-2"
+                      className={portrait && !alone ? "" : "md:col-span-2"}
                     >
                       <VideoPlayer
                         videoUrl={item.url}
                         posterImage={item.posterImage}
                         title={item.alt}
-                        className="rounded-3xl"
+                        aspect={portrait ? "portrait" : "landscape"}
+                        className={
+                          portrait
+                            ? "mx-auto w-full max-w-sm rounded-3xl"
+                            : "rounded-3xl"
+                        }
                       />
                     </li>
                   );
