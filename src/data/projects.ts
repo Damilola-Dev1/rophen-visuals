@@ -46,6 +46,76 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
+  {
+    slug: "where-moments-become-memories",
+    title: "Where Moments Become Memories",
+    category: "photography",
+    coverImage:
+      "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-01",
+    media: [
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-01",
+        alt: "Where Moments Become Memories: photo 1",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-02",
+        alt: "Where Moments Become Memories: photo 2",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-03",
+        alt: "Where Moments Become Memories: photo 3",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-04",
+        alt: "Where Moments Become Memories: photo 4",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-05",
+        alt: "Where Moments Become Memories: photo 5",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-06",
+        alt: "Where Moments Become Memories: photo 6",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-07",
+        alt: "Where Moments Become Memories: photo 7",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-08",
+        alt: "Where Moments Become Memories: photo 8",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-09",
+        alt: "Where Moments Become Memories: photo 9",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-10",
+        alt: "Where Moments Become Memories: photo 10",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-11",
+        alt: "Where Moments Become Memories: photo 11",
+      },
+      {
+        type: "image",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-12",
+        alt: "Where Moments Become Memories: photo 12",
+      },
+    ],
+    featured: true,
+  },
 ];
 
 // Demo media: an empty url shows a dev-only slot. Never appears on the live site.
