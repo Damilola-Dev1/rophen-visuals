@@ -57,10 +57,12 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(true)}
-            className="group grid h-9 w-9 place-items-center rounded-full bg-ivory/10 transition-all duration-200 active:scale-90 active:bg-ivory/20 motion-reduce:transform-none md:hidden"
+            className="group flex h-10 items-center gap-2 rounded-full bg-bronze pl-4 pr-3.5 text-sm font-semibold text-charcoal transition-all duration-200 active:scale-95 motion-reduce:transform-none md:hidden"
           >
+            Menu
             <List
               size={20}
+              weight="bold"
               aria-hidden="true"
               className="transition-transform duration-300 ease-out group-active:rotate-90 motion-reduce:transform-none"
             />
