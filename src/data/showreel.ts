@@ -5,16 +5,20 @@ import type { ShowreelVideo } from "../types";
 // a development slot locally and is hidden on the live site.
 //
 // videoUrl: a direct link to the compressed .mp4 (for example from Cloudinary).
-// posterImage: shown before playback, e.g. '/media/showreel-1-poster.jpg'.
+// posterImage: shown before playback, a frame taken from the video.
 export const showreelVideos: ShowreelVideo[] = [
   {
     title: "Rophen Visuals showreel, part one",
-    videoUrl: "/media/hero.mp4",
-    posterImage: "",
+    videoUrl:
+      "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1794922513/showreel-1.mp4",
+    posterImage:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1794922513/showreel-1.jpg",
   },
   {
     title: "Rophen Visuals showreel, part two",
-    videoUrl: "/media/hero.mp4",
-    posterImage: "",
+    videoUrl:
+      "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1794922551/showreel-2.mp4",
+    posterImage:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1794922551/showreel-2.jpg",
   },
 ];
