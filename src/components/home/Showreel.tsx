@@ -10,6 +10,7 @@ import VideoPlayer from "../ui/VideoPlayer";
 import { showreelVideos } from "../../data/showreel";
 
 const PHONE_QUERY = "(max-width: 767px)";
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Showreel() {
   const groupRef = useRef<HTMLDivElement>(null);
@@ -81,18 +82,25 @@ export default function Showreel() {
   const staggered = items.length > 1;
   const openVideo = openIndex !== null ? items[openIndex] : null;
 
+  // Entrance animation: phones only, and off when reduced motion is on.
+  const animateOnPhone = isPhone && !reduceMotion;
+
   return (
     <section
       id="showreel"
       aria-labelledby="showreel-heading"
       className="overflow-hidden bg-ivory px-4 pb-24 pt-20 md:px-8 md:pb-32 md:pt-28"
     >
-      <h2
+      <motion.h2
         id="showreel-heading"
+        initial={animateOnPhone ? { opacity: 0, y: 70 } : false}
+        whileInView={animateOnPhone ? { opacity: 1, y: 0 } : undefined}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.7, ease: EASE }}
         className="whitespace-nowrap text-center font-display text-[16vw] font-medium uppercase leading-[0.85] tracking-[-0.02em] text-charcoal"
       >
         Showreel
-      </h2>
+      </motion.h2>
 
       {isPhone ? (
         /* Phone: two poster tiles side by side. Tap one to watch it full screen. */
@@ -102,12 +110,20 @@ export default function Showreel() {
             const canPlay = Boolean(video.videoUrl);
 
             return (
-              <button
+              <motion.button
                 key={video.title}
                 type="button"
                 disabled={!canPlay}
                 onClick={() => setOpenIndex(index)}
                 aria-label={`Play ${video.title}`}
+                initial={animateOnPhone ? { opacity: 0, y: 60 } : false}
+                whileInView={animateOnPhone ? { opacity: 1, y: 0 } : undefined}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.7,
+                  ease: EASE,
+                  delay: 0.25 + index * 0.15,
+                }}
                 className={`relative isolate aspect-[9/16] w-full overflow-hidden rounded-2xl bg-charcoal ${position}`}
               >
                 {video.posterImage && (
@@ -124,7 +140,7 @@ export default function Showreel() {
                     <Play size={24} weight="fill" aria-hidden="true" />
                   </span>
                 </span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
