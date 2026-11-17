@@ -45,6 +45,9 @@ export interface Service {
   slug: string;
   title: string;
   description: string;
+  // Optional real photo from the client's work. Leave empty if there isn't one yet.
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface AboutContent {

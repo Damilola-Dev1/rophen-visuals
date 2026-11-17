@@ -4,7 +4,8 @@ import type { AboutContent } from "../types";
 // An empty value shows a dev-only slot locally and is hidden on the live site.
 export const about: AboutContent = {
   name: "Funmilola Adekunle",
-  portraitImage: "",
+  portraitImage:
+    "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_1000/funmilola-portrait",
   portraitAlt:
     "Portrait of Funmilola Adekunle, the creative behind Rophen Visuals",
   paragraphs: [

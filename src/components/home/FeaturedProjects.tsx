@@ -26,7 +26,7 @@ export default function FeaturedProjects() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="bg-ivory px-6 pb-20 pt-8 md:px-16 md:pb-28 md:pt-16"
+      className="bg-ivory px-6 pb-0 pt-8 md:px-16 md:pt-16"
     >
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -87,6 +87,12 @@ export default function FeaturedProjects() {
             ))}
           </ul>
         )}
+
+        {/* Thin line marking where Featured Projects ends and Services begins. */}
+        <div
+          aria-hidden="true"
+          className="mt-12 border-t border-charcoal/15 md:mt-16"
+        />
       </div>
     </section>
   );

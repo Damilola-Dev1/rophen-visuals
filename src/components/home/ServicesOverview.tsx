@@ -64,7 +64,7 @@ export default function ServicesOverview() {
               if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
             }}
           >
-            <div className="min-h-[22rem] md:min-h-[28rem]" aria-live="polite">
+            <div className="min-h-[36rem] md:min-h-[26rem]" aria-live="polite">
               <AnimatePresence mode="wait" initial={false} custom={direction}>
                 <motion.div
                   key={service.slug}
@@ -77,7 +77,7 @@ export default function ServicesOverview() {
                     duration: reduceMotion ? 0 : 0.35,
                     ease: "easeOut",
                   }}
-                  className="mx-auto grid max-w-5xl grid-cols-[1.15fr_1fr] items-center gap-4 md:gap-14"
+                  className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-[1.15fr_1fr] md:items-center md:gap-14"
                 >
                   <div>
                     <p className="font-display text-xl italic leading-snug text-charcoal sm:text-2xl md:text-4xl">
@@ -97,12 +97,26 @@ export default function ServicesOverview() {
                     </Link>
                   </div>
 
-                  <div className="flex aspect-[4/5] flex-col items-center justify-between rounded-3xl bg-charcoal px-4 py-8 text-center text-ivory md:px-8 md:py-12">
+                  <div className="relative isolate order-first mx-auto flex aspect-[4/5] w-full max-w-sm flex-col items-center overflow-hidden rounded-3xl bg-charcoal px-6 py-8 text-center text-ivory md:order-none md:max-w-xs md:justify-between md:justify-self-center md:px-8 md:py-12">
+                    {service.image && (
+                      <>
+                        {/* Decorative: the title is already in text on the card. */}
+                        <img
+                          src={service.image}
+                          alt=""
+                          className="absolute inset-0 -z-20 h-full w-full object-cover"
+                        />
+                        <span
+                          aria-hidden="true"
+                          className="absolute inset-0 -z-10 bg-charcoal/55"
+                        />
+                      </>
+                    )}
                     <p className="text-xs uppercase tracking-[0.2em] text-bronze">
                       Service
                     </p>
-                    <div className="flex flex-col items-center">
-                      <h3 className="break-words font-display text-2xl font-medium italic leading-tight sm:text-3xl md:text-5xl">
+                    <div className="mt-auto flex flex-col items-center md:mt-0">
+                      <h3 className="break-words font-display text-3xl font-medium italic leading-tight md:text-5xl">
                         {service.title}
                       </h3>
                       <span
@@ -110,7 +124,7 @@ export default function ServicesOverview() {
                         className="mt-5 block h-px w-14 bg-ivory/40"
                       />
                     </div>
-                    <p className="font-display text-base text-ivory/70 md:text-xl">
+                    <p className="mt-4 font-display text-base text-ivory/70 md:mt-0 md:text-xl">
                       {String(index + 1).padStart(2, "0")} /{" "}
                       {String(count).padStart(2, "0")}
                     </p>

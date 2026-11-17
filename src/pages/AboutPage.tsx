@@ -44,7 +44,7 @@ export default function AboutPage() {
             {about.name}
           </h1>
 
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-charcoal md:text-lg">
+          <div className="mt-8 space-y-5 text-justify text-base leading-relaxed text-charcoal hyphens-auto md:text-lg">
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
             ))}
