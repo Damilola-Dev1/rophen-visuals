@@ -23,6 +23,8 @@ export const services: Service[] = [
     title: "Content Creation",
     description:
       "Creating engaging visual content for individuals, businesses and brands.",
+    image:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_4,w_720,q_auto/v1795004755/content-1.jpg",
   },
   {
     slug: "event-coverage",
@@ -37,11 +39,15 @@ export const services: Service[] = [
     title: "Behind-the-Scenes (BTS)",
     description:
       "Capturing the process, preparations and moments that happen behind the camera.",
+    image:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_8,w_720,q_auto/v1795002509/bts-1.jpg",
   },
   {
     slug: "video-editing",
     title: "Video Editing",
     description:
       "Editing and transforming raw footage into engaging, well-put-together videos.",
+    image:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_6,w_720,q_auto/v1795002586/content-2.jpg",
   },
 ];
