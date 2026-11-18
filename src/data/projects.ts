@@ -95,17 +95,17 @@ export const projects: Project[] = [
       },
       {
         type: "image",
-        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-09",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/v1794991129/lens-09",
         alt: "Where Moments Become Memories: photo 9",
       },
       {
         type: "image",
-        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-10",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/v1794991182/lens-10",
         alt: "Where Moments Become Memories: photo 10",
       },
       {
         type: "image",
-        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/lens-11",
+        url: "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/v1794991232/lens-11",
         alt: "Where Moments Become Memories: photo 11",
       },
       {
