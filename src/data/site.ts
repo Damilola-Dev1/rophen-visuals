@@ -11,7 +11,7 @@ export const site: SiteConfig = {
   description:
     "A creative visual production brand offering videography, photography, content creation and post-production services.",
   email: "",
-  phone: "",
-  whatsapp: "",
+  phone: "08020976934",
+  whatsapp: "2348020976934",
   socialLinks: [],
 };
