@@ -4,6 +4,40 @@ import type { MediaItem, Project } from "../types";
 // While it is empty, the live site shows "coming soon" instead of projects.
 export const projects: Project[] = [
   {
+    slug: "content-creation-the-art-of-storytelling",
+    title: "Content Creation: The Art of Storytelling",
+    category: "content-creation",
+    coverImage:
+      "https://res.cloudinary.com/xowl35un/image/upload/f_auto,q_auto,w_900/v1795005382/content-cover.jpg",
+    media: [
+      {
+        type: "video",
+        url: "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1795004755/content-1.mp4",
+        posterImage:
+          "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1795004755/content-1.jpg",
+        alt: "Content Creation: The Art of Storytelling: video 1",
+        orientation: "portrait",
+      },
+      {
+        type: "video",
+        url: "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1795002586/content-2.mp4",
+        posterImage:
+          "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1795002586/content-2.jpg",
+        alt: "Content Creation: The Art of Storytelling: video 2",
+        orientation: "portrait",
+      },
+      {
+        type: "video",
+        url: "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1795002744/content-3.mp4",
+        posterImage:
+          "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1795002744/content-3.jpg",
+        alt: "Content Creation: The Art of Storytelling: video 3",
+        orientation: "portrait",
+      },
+    ],
+    featured: true,
+  },
+  {
     slug: "a-beautiful-beginning",
     title: "A beautiful beginning",
     category: "event-coverage",
@@ -115,6 +149,24 @@ export const projects: Project[] = [
       },
     ],
     featured: true,
+  },
+  {
+    slug: "behind-the-moments",
+    title: "BTS: Behind the Moments",
+    category: "behind-the-scenes",
+    coverImage:
+      "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1795002509/bts-1.jpg",
+    media: [
+      {
+        type: "video",
+        url: "https://res.cloudinary.com/xowl35un/video/upload/vc_h264,w_720,q_auto/v1795002509/bts-1.mp4",
+        posterImage:
+          "https://res.cloudinary.com/xowl35un/video/upload/so_2,w_720,q_auto/v1795002509/bts-1.jpg",
+        alt: "BTS: Behind the Moments: video 1",
+        orientation: "portrait",
+      },
+    ],
+    featured: false,
   },
 ];
 

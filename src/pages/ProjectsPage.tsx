@@ -76,10 +76,10 @@ export default function ProjectsPage() {
                 </button>
               </div>
             ) : (
-              <ul className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-3">
+              <ul className="mt-12 grid grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-3">
                 {visible.map((project) => (
                   <li key={project.slug}>
-                    <ProjectCard project={project} />
+                    <ProjectCard project={project} compact />
                   </li>
                 ))}
               </ul>
