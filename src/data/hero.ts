@@ -2,11 +2,12 @@ import type { HeroMedia } from "../types";
 
 // Hero background media.
 //
-// videoUrl: a direct link to a short, compressed .mp4 loop (about 10-15 seconds).
-//   For now this is a small file in the public/media folder. Later it can be
-//   swapped for a hosted link (for example Cloudinary) by changing this one line.
+// videoUrl: a link to a short, compressed .mp4 loop, hosted on Cloudinary.
+//   The vc_h264 part makes sure it plays on iPhone Safari.
+//   To swap the video later, upload the new one to Cloudinary and change this one line.
 // posterImage: shown before the video loads and whenever the video can't play.
 export const heroMedia: HeroMedia = {
-  videoUrl: "/media/hero.mp4",
+  videoUrl:
+    "https://res.cloudinary.com/xowl35un/video/upload/vc_h264/v1795364607/hero-loop.mp4",
   posterImage: "/media/hero-poster.jpg",
 };
