@@ -1,12 +1,18 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ServicesPage from "./pages/ServicesPage";
+
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const ProjectDetailsPage = lazy(() => import("./pages/ProjectDetailsPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+
+function PageFallback() {
+  return <div className="min-h-[60svh] bg-ivory" aria-hidden="true" />;
+}
 
 export default function App() {
   return (
@@ -14,12 +20,54 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="projects" element={<ProjectsPage />} />
-          <Route path="projects/:slug" element={<ProjectDetailsPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="projects"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <ProjectsPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="projects/:slug"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <ProjectDetailsPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="about"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <AboutPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="services"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <ServicesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="contact"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <ContactPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={<PageFallback />}>
+                <NotFoundPage />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
