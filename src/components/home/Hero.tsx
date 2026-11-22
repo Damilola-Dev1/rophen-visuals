@@ -94,7 +94,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pb-16 pt-32 text-center md:px-16">
         <motion.p
           {...rise(0)}
-          className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.1em] text-bronze sm:text-sm sm:tracking-[0.2em] md:text-base"
+          className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.1em] text-bronze [text-shadow:0_0_14px_rgba(242,238,230,0.45)] sm:text-sm sm:tracking-[0.2em] md:text-base"
         >
           Videography · Photography · Content
         </motion.p>
@@ -110,10 +110,12 @@ export default function Hero() {
 
         <motion.p
           {...rise(0.24)}
-          className="mt-6 max-w-xl text-base leading-relaxed text-ivory/90 md:text-lg"
+          className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/90 [text-shadow:0_0_14px_rgba(242,238,230,0.45)] md:text-lg"
         >
-          From personal moments to brand campaigns and live events, Rophen
-          Visuals creates videos and photographs that bring your ideas to life.
+          Rophen Visuals captures moments, creates compelling content and
+          produces films that leave a lasting impression. From personal
+          celebrations to brand campaigns and live events, we turn ideas into
+          visuals worth experiencing.
         </motion.p>
 
         <motion.div

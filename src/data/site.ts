@@ -13,5 +13,14 @@ export const site: SiteConfig = {
   email: "",
   phone: "08020976934",
   whatsapp: "2348020976934",
-  socialLinks: [],
+  socialLinks: [
+    {
+      platform: "instagram",
+      url: "https://www.instagram.com/rophen_visuals",
+    },
+    {
+      platform: "tiktok",
+      url: "https://www.tiktok.com/@rophen.visuals",
+    },
+  ],
 };
